@@ -1,6 +1,10 @@
-## Getting Started
+# Getting Started With JavaFx 
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+##This Program is a Network Calculator 
+
+    >The Client side gets the Input.
+    >The Server side calculate and response the result.
+    
 
 ## Folder Structure
 
@@ -9,6 +13,10 @@ The workspace contains two folders by default, where:
 - `src`: the folder to maintain sources
 - `lib`: the folder to maintain dependencies
 
-## Dependency Management
+## To Run This Program 
+1. On Linux
+    * Just persolize the Run (Shell)  file By Changing the javaFx to your own path
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+2. On Windows 
+    * Install Linux and Enjoy your Life !!!!
+    * you can use this [Link] (https://openjfx.io/openjfx-docs/#install-javafx)
