@@ -1,0 +1,3 @@
+#!/bin/bash
+javac --module-path $javaFx --add-modules javafx.controls App.java 
+java --module-path $javaFx --add-modules javafx.controls App 
