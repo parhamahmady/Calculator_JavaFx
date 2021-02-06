@@ -15,8 +15,8 @@ The workspace contains two folders by default, where:
 
 ## To Run This Program 
 1. On Linux
-    * Just persolize the Run (Shell)  file By Changing the javaFx to your own path
+    * Just personalize the Run (Shell)  file by changing the <>javaFx<> to your own path
 
 2. On Windows 
-    * Install Linux and Enjoy your Life !!!!
+    * Install Linux and enjoy your Life !!!!
     * you can use this [Link]  (https://openjfx.io/openjfx-docs/#install-javafx)
