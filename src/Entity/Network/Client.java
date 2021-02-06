@@ -11,7 +11,7 @@ import java.net.Socket;
 public class Client {
     private Socket socket;
     private InputStream is;
-    private OutputStream io;
+    private OutputStream os;
 
     /**
      * Constructor
@@ -23,9 +23,29 @@ public class Client {
     public Client(String serverIp, int serverPort) throws IOException {
 
         socket = new Socket(serverIp, serverPort);
-        io = socket.getOutputStream();
+        os = socket.getOutputStream();
         is = socket.getInputStream();
+
     }
 
-    
+    /**
+     * 
+     * @param messages will send to Server
+     * @return response
+     * @throws IOException
+     */
+    public synchronized String massenger(String... messages) throws IOException {
+        byte[] buffer = new byte[2048];
+        String awnser = "";
+        for (String message : messages) {
+            os.write(message.getBytes()); // Send The Message
+            int read = is.read(buffer);
+            awnser = new String(buffer, 0, read);
+            if (awnser.isBlank())
+                return awnser;
+        }
+        int read = is.read(buffer);
+        awnser = new String(buffer, 0, read);
+        return awnser;
+    }
 }
