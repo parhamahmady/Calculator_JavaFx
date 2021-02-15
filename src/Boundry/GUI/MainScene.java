@@ -1,6 +1,7 @@
 package Boundry.GUI;
 
-import Entity.SharedData;
+import Controllers.Controller;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,15 +14,16 @@ public class MainScene {
     private Scene scene;
     private BorderPane borderPane;
     private Label monitor;
-    private SharedData sharedData;
+
+    private Controller controller;
 
     public MainScene() {
 
-        sharedData = SharedData.getSharedData();
+        controller = new Controller(this);
 
         borderPane = new BorderPane();
 
-        monitor = new Label("120");
+        monitor = new Label("0"); // Default first time result is 0
         monitor.setTextAlignment(TextAlignment.CENTER);
         monitor.setMinSize(300, 100);
         borderPane.setTop(monitor);
@@ -30,6 +32,7 @@ public class MainScene {
         gridPane.setHgap(10);
         gridPane.setVgap(10);
 
+        // Adding Function Buttons
         Button cancel = new Button("C");
         cancel.setMinSize(50, 50);
         gridPane.add(cancel, 0, 0);
@@ -54,13 +57,17 @@ public class MainScene {
         devide.setMinSize(50, 50);
         gridPane.add(devide, 1, 1);
 
+        // Adding Number Buttons
+
         int m = 0;
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 3; j++) {
                 Button b = new Button(Integer.toString(m));
                 b.setMinSize(50, 50);
-                b.setOnAction(e -> System.out.println(b.getText()));
+                // b.setOnAction(e -> System.out.println(b.getText()));
+                b.setOnAction(e -> controller.addNumber(b.getText()));
+
                 gridPane.add(b, j + 2, i);
                 m++;
             }
@@ -73,5 +80,9 @@ public class MainScene {
 
     public Scene getScene() {
         return scene;
+    }
+
+    public Label getMonitor() {
+        return monitor;
     }
 }

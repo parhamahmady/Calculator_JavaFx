@@ -1,15 +1,7 @@
 import Boundry.GUI.MainScene;
-import Boundry.GUI.Window;
-import Controllers.MainController;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -38,7 +30,7 @@ public class Main extends Application {
 
         Label monitor = new Label("0");
         borderPane.setTop(monitor);
-
+        
         MainScene mainScene = new MainScene();
         stage.setScene(mainScene.getScene());
         stage.show();
