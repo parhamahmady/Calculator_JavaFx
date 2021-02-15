@@ -19,7 +19,7 @@ public class Controller {
      * @param mainScene that should be under control
      */
     private Controller() throws IOException {
-        socketClient = new Client("127.0.0.1", 2002);
+        socketClient = new Client("127.0.0.1", 3002);
         this.mainScene = new MainScene(this);
         reset();
     }
@@ -44,18 +44,31 @@ public class Controller {
     }
 
     public void functionHandler(String function) {
+        if (!isActive)
+            return;
+
         if (function.equals("C")) { // in case of Cancle
             reset();
             mainScene.getMonitor().setText("0");
             return;
         }
         if (function.equals("=")) {
+            isActive = false;
             System.out.println("Equals");
             String[] message = new String[4];
             message[0] = "calc"; // to tell server calculate
             message[1] = firstNum;
             message[2] = secondNum;
-            message[3] = function;
+            message[3] = func;
+            try {
+                String awnser = socketClient.massenger(message);
+                reset();
+                mainScene.getMonitor().setText(awnser);
+                isActive = true;
+            } catch (Exception e) {
+                mainScene.getMonitor().setText("ERROR");
+            }
+
             return;
         }
         func = function;

@@ -44,8 +44,8 @@ public class Client {
             if (awnser.isBlank())
                 return awnser;
         }
-        int read = is.read(buffer);
-        awnser = new String(buffer, 0, read);
+        // int read = is.read(buffer);
+        // awnser = new String(buffer, 0, read);
         return awnser;
     }
 }

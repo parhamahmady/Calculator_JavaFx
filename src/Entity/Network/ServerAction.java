@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import Entity.Arithmatic.Calculator;
+
 public class ServerAction implements Runnable {
     private Socket connectionSocket;
     private Server server;
@@ -50,6 +52,7 @@ public class ServerAction implements Runnable {
             switch (command) {
                 case "calc":
                     os.write("OK".getBytes());// tells client im ready
+                    System.out.println("Calc");
                     calc();
                     return; // DeActive the parser to calculate
 
@@ -72,14 +75,16 @@ public class ServerAction implements Runnable {
         byte[] buffer = new byte[2048];
         int read = is.read(buffer);
 
-        String firstNumb = new String(buffer, 0, read);
-        os.write("OK".getBytes());// tells client im ready to recive second Number
+        String firstNumber = new String(buffer, 0, read);
+        os.write("OK1".getBytes());// tells client im ready to recive second Number
 
-        String secondNumber = new String(buffer, 0, read);
-        os.write("OK".getBytes());// tells client im ready to recive Func
+        int read2 = is.read(buffer);
+        String secondNumber = new String(buffer, 0, read2);
+        os.write("OK2".getBytes());// tells client im ready to recive Func
 
-        String func = new String(buffer, 0, read);
-        // os.write("OK".getBytes());// tells client im ready to recive second Numv=ber
+        int read3 = is.read(buffer);
+        String func = new String(buffer, 0, read3);
+        os.write(Calculator.Calculate(firstNumber, secondNumber, func).getBytes()); // return Awnser
 
         commandParser();
     }
