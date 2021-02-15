@@ -48,9 +48,9 @@ public class ServerAction implements Runnable {
             int read = is.read(buffer);
             String command = new String(buffer, 0, read);
             switch (command) {
-                case "1":
-                    os.write("5".getBytes());// tells client im ready
-                    calculator();
+                case "calc":
+                    os.write("OK".getBytes());// tells client im ready
+                    calc();
                     return; // DeActive the parser to calculate
 
             }
@@ -68,10 +68,18 @@ public class ServerAction implements Runnable {
 
     }
 
-    private void calculator() throws IOException {
+    private void calc() throws IOException {
         byte[] buffer = new byte[2048];
         int read = is.read(buffer);
-        String message = new String(buffer, 0, read);
+
+        String firstNumb = new String(buffer, 0, read);
+        os.write("OK".getBytes());// tells client im ready to recive second Number
+
+        String secondNumber = new String(buffer, 0, read);
+        os.write("OK".getBytes());// tells client im ready to recive Func
+
+        String func = new String(buffer, 0, read);
+        // os.write("OK".getBytes());// tells client im ready to recive second Numv=ber
 
         commandParser();
     }

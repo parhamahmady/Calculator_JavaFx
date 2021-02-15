@@ -1,7 +1,6 @@
 package Boundry.GUI;
 
 import Controllers.Controller;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,9 +16,9 @@ public class MainScene {
 
     private Controller controller;
 
-    public MainScene() {
+    public MainScene(Controller Maincontroller) {
 
-        controller = new Controller(this);
+        this.controller = Maincontroller;
 
         borderPane = new BorderPane();
 
@@ -35,26 +34,32 @@ public class MainScene {
         // Adding Function Buttons
         Button cancel = new Button("C");
         cancel.setMinSize(50, 50);
+        cancel.setOnAction(e -> controller.functionHandler("C"));
         gridPane.add(cancel, 0, 0);
 
         Button equal = new Button("=");
         equal.setMinSize(50, 50);
+        equal.setOnAction(e -> controller.functionHandler("="));
         gridPane.add(equal, 1, 2);
 
         Button plus = new Button("+");
         plus.setMinSize(50, 50);
+        plus.setOnAction(e -> controller.functionHandler("+"));
         gridPane.add(plus, 0, 1);
 
         Button mines = new Button("-");
         mines.setMinSize(50, 50);
+        mines.setOnAction(e -> controller.functionHandler("-"));
         gridPane.add(mines, 0, 2);
 
         Button multi = new Button("*");
         multi.setMinSize(50, 50);
+        multi.setOnAction(e -> controller.functionHandler("*"));
         gridPane.add(multi, 1, 0);
 
         Button devide = new Button("/");
         devide.setMinSize(50, 50);
+        devide.setOnAction(e -> controller.functionHandler("/"));
         gridPane.add(devide, 1, 1);
 
         // Adding Number Buttons
