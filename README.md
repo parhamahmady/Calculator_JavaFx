@@ -15,7 +15,8 @@ The workspace contains two folders by default, where:
 
 ## To Run This Program 
 1. On Linux
-    * Just personalize the Run (Shell)  file by changing the <>javaFx<> to your own path
+    * Just personalize the Run (Shell)  file by changing the <>javaFx<> to your own path (For Client)
+    * Compile ServerRun.java and run it 
 
 2. On Windows 
     * Install Linux and enjoy your Life !!!!

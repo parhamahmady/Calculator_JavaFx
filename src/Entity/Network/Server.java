@@ -2,11 +2,13 @@ package Entity.Network;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Server that has some sessions to calculate numbers
+ */
 public class Server {
 
     private ServerSocket welcomingSocket;
@@ -21,7 +23,7 @@ public class Server {
      * @throws IOException in case the port was busy
      */
     private Server(int port) throws IOException {
-
+        activeSessions = new HashMap<>();
         welcomingSocket = new ServerSocket(port);
         sessionPool = Executors.newCachedThreadPool();
 
@@ -39,6 +41,8 @@ public class Server {
 
             server = new Server(port);
             server.isOn = true;
+            System.out.println("Server is Ready");
+            server.tripleHandShake();
             return server;
 
         } catch (Exception e) {
@@ -58,7 +62,7 @@ public class Server {
                         ++sessoinNumbers);
                 activeSessions.put(tempServerAction.getSessionId(), tempServerAction);
                 sessionPool.execute(tempServerAction);
-                
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
