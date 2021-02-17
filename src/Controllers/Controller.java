@@ -48,11 +48,14 @@ public class Controller {
             return;
 
         if (function.equals("C")) { // in case of Cancle
+
             reset();
             mainScene.getMonitor().setText("0");
             return;
         }
+
         if (function.equals("=")) {
+
             isActive = false;
             System.out.println("Equals");
             String[] message = new String[4];
@@ -60,18 +63,25 @@ public class Controller {
             message[1] = firstNum;
             message[2] = secondNum;
             message[3] = func;
+
             try {
+
                 String awnser = socketClient.massenger(message);
                 reset();
+                firstNum = awnser;
                 mainScene.getMonitor().setText(awnser);
                 isActive = true;
+
             } catch (Exception e) {
+
                 mainScene.getMonitor().setText("ERROR");
             }
 
             return;
         }
+
         func = function;
+
         updateMonitor();
     }
 
