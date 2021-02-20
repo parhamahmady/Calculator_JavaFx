@@ -5,4 +5,4 @@ java ClassRemover
 export javaFx=~/Documents/javafx-sdk-11.0.2/lib
 javac --module-path $javaFx --add-modules javafx.controls Main.java 
 javac ServerRun.java
-java --module-path $javaFx --add-modules javafx.controls Main &
+java --module-path $javaFx --add-modules javafx.controls Main 

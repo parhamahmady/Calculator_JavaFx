@@ -18,7 +18,7 @@ public class ClassRemover {
         // System.out.println("Tell Me The Folder Address (Must have / add the end)");
         // address = fScanner.next();
         // fScanner.close();
-        address = "./";
+        address = "../";
         try {
             fileFinder(address);
             System.out.println("Deleted");
